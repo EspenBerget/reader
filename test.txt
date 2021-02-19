@@ -1,0 +1,11 @@
+Test File for Screen Reader
+
+This is a test file.
+
+It is important to know that this text will not be presented normally, but will instead be shown one word at a time.
+This is to aid in reading speed as one off the handicaps of our reading speed is the movement of the eye!
+
+Hope you see that you are reading much faster now, and that this does not feel like too much of a loss.
+
+The text is still available as a whole, so you can still read it when you like, but maybe read through it first like this.
+

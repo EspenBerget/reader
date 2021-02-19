@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: bisque;
+    color: rgb(43, 43, 43);
+}
+
+#fileSelect {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+
+#file {
+    border: 3px ridge black;
+    height: calc(100vh - 6px);
+    width: 500px;
+    overflow: scroll;
+}
+
+#fileDisplay {
+    margin: 0.5rem;
+}
+
+#display {
+    font-size: 3rem;
+    font-family: monospace;
+    flex-basis: 100px;
+}
+
+#speed {
+    flex-basis: 50px;
+}
+
+#reader {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-basis: 500px;
+}
+
