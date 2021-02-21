@@ -27,6 +27,12 @@ body {
     }
 }
 
+@media screen and (min-width: 1200px) {
+    #file {
+        min-width: 800px;
+    }
+}
+
 #fileSelect {
     position: absolute;
     top: 2rem;
