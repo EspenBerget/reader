@@ -4,4 +4,3 @@ The full text is still available, and highlighted so the reader can see where th
 
 ## TODOs
 * Support different filetypes.
-* auto scroll text file
