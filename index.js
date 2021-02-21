@@ -28,7 +28,8 @@ fileSelect.onchange = ev => {
 */
 
 const exampleText = 
-`Test File for Screen Reader
+`
+Test File for Screen Reader
 
 This is a test file.
 
@@ -37,7 +38,13 @@ This is to aid in reading speed as one off the handicaps of our reading speed is
 
 Hope you see that you are reading much faster now, and that this does not feel like too much of a loss.
 
-The text is still available as a whole, so you can still read it when you like, but maybe read it like this first.`;
+The text is still available as a whole, so you can still read it when you like, but maybe read it like this first.
+
+You can pause and play this reader with space or "k", as well as skip and go back with "l" and "j" respectively.
+
+Choose and text file on your computer and start reading, but remember that this is still a proof of concept. The file size should not be to big. 
+
+`;
 
 window.onload = () => {
     fileDisplay.innerHTML = view(parse(exampleText));
