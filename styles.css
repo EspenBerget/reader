@@ -81,6 +81,6 @@ body {
     background-color: lightblue;
 }
 
-.wordsHighlight {
+#wordHighlight {
     background-color: cyan;
 }

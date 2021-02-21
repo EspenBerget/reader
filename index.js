@@ -54,7 +54,7 @@ function view(page) {
     return page.sentences.map((s, ix) => {
         const words = s.map((w, wordIx) => {
             if (page.ix === ix && page.wordIx === wordIx) {
-                return `<span class="wordsHighlight">${w}</span>`;
+                return `<span id="wordHighlight">${w}</span>`;
             }
             return w;
         }).join(' ');
@@ -88,6 +88,7 @@ function nextWord() {
     }
     
     fileDisplay.innerHTML = view(page);
+    document.getElementById("wordHighlight").scrollIntoView();
     display.textContent = page.sentences[page.ix][page.wordIx++];
 }
 
