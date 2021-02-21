@@ -35,6 +35,11 @@ body {
     flex-basis: 100px;
 }
 
+#controls {
+    display:flex;
+    justify-content: center;
+}
+
 #speed {
     flex-basis: 50px;
 }
