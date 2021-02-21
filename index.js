@@ -29,7 +29,7 @@ fileSelect.onchange = ev => {
 
 const exampleText = 
 `
-Test File for Screen Reader
+Test File for No Eye Movement Reader
 
 This is a test file.
 
