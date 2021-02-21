@@ -7,28 +7,69 @@ const fileSelect = document.getElementById("fileSelect");
 fileSelect.onchange = ev => {
     const reader = new FileReader();
     reader.onloadend = () => {
-        fileDisplay.textContent = parse(reader.result); 
+        fileDisplay.innerHTML = view(parse(reader.result)); 
     };
     reader.onerror = () => {
         fileDisplay.textContent = "error reading file";
-    }
+    };
     reader.readAsText(ev.target.files[0]);
 };
 
-function parse(value) {
-    // TODO
-    text = value;
-    words = text.split(/[,;:]?\s|\./);
-    return value
+/* 
+    page = {
+        sentences : array sentence,
+        ix: number,
+        wordIx: number
+    }
+
+    sentence : array string
+*/
+
+function view(page) {
+    return page.sentences.map((s, ix) => {
+        const words = s.map((w, wordIx) => {
+            if (page.ix === ix && page.wordIx === wordIx) {
+                return `<span class="wordsHighlight">${w}</span>`;
+            }
+            return w;
+        }).join(' ');
+
+        if (page.ix === ix) {
+            return `<p class="highlight">${words}</p>`;
+        }
+        return `<p>${words}</p>`;
+    }).join('');
+}
+
+function parse(text) {
+    const sentences = text.split(/\n/).filter(v => v !== "").map(v => v.split(' '));
+    page = {
+        sentences,
+        ix: 0,
+        wordIx: 0
+    };
+    return page;
+}
+
+function nextWord() {
+    if (page.wordIx === page.sentences[page.ix].length) {
+        page.wordIx = 0;
+        page.ix++;
+    } 
+    if (page.ix === page.sentences.length) {
+        window.cancelAnimationFrame(req);
+        page = {...page, ix: 0, wordIx: 0};
+        togglePlay();
+    }
+    
+    fileDisplay.innerHTML = view(page);
+    display.textContent = page.sentences[page.ix][page.wordIx++];
 }
 
 
 // Reader
-let text = "This is an example text. It will be used to display words, one at a time to show how we could read differently.";
-let words = text.split(/[,;:]?\s|\./);
-let interval = null;
-let ix = 0;
-let req;
+let req; // holds the current request frame, used to start/cancel animation
+let page; // holds a parsed version off the file. used to display and progress the reader
 
 let speedValue = 500;
 
@@ -40,7 +81,7 @@ speed.oninput = ev => {
 // STOP/START on button press and when user presses space
 play.onclick = togglePlay;
 window.addEventListener("keypress", ev => {
-    if (ev.key == " ") {
+    if (ev.key === " ") {
         togglePlay();
     }
 })
@@ -62,13 +103,6 @@ function togglePlay() {
     toggleDisplay();
 }
 
-
-function updateWordDisplay() {
-    display.textContent = words[ix];
-    ix++;
-    if (ix === words.length) ix = 0;
-}
-
 let start;
 function step(timestamp) {
     req = window.requestAnimationFrame(step);
@@ -76,7 +110,7 @@ function step(timestamp) {
     const elapsed = timestamp - start;
 
     if (elapsed > speedValue) {
-        updateWordDisplay();
+        nextWord();
         start = timestamp;
     }
 }

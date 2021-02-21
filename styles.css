@@ -39,6 +39,10 @@ body {
     flex-basis: 50px;
 }
 
+#speed:focus {
+    border: none;
+}
+
 #reader {
     display: flex;
     flex-direction: column;
@@ -47,3 +51,10 @@ body {
     flex-basis: 500px;
 }
 
+.highlight {
+    background-color: lightblue;
+}
+
+.wordsHighlight {
+    background-color: cyan;
+}
